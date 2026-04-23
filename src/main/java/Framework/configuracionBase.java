@@ -22,11 +22,12 @@ public class configuracionBase
     public static String Username = "standard_user";
     public static String Password = "secret_sauce";
 
+
     @BeforeAll
     public static void AntesDeTodo() throws Exception {
         System.out.println("Rutina: Before All (Antes de Todos los Casos de Prueba)");
 
-        // Configuración del Driver: Definición de ruta y propiedades del sistema
+       // Configuración del Driver: Definición de ruta y propiedades del sistema.
         String ChromeDriver = "drivers/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", ChromeDriver);
         ChromeOptions options = new ChromeOptions();
@@ -40,6 +41,12 @@ public class configuracionBase
         // Inicialización: Lanzamiento del navegador y carga de la URL base
         Driver = new ChromeDriver(options);
         Driver.get(UrlDemo);
+        Thread.sleep(1000);
+        
+        // Maximización de Ventana
+        Driver = new ChromeDriver(options);
+        Driver.get(UrlDemo);
+        Driver.manage().window().maximize(); // ← línea nueva
         Thread.sleep(1000);
     }
 
